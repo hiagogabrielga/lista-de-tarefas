@@ -31,8 +31,8 @@ app.get('/tarefas', async (req, res) => {
 app.post('/tarefas', async (req, res) => {
     try {
         const { titulo, descricao } = req.body;
-        if (titulo === undefined || descricao === undefined) {
-            return res.status(400).send('Os campos título e descrição são obrigatórios.');
+        if (titulo === undefined) {
+            return res.status(400).send('O campo título é obrigatório.');
         }
         const resposta = await adicionarTarefa(titulo, descricao);
         if (resposta.affectedRows > 0) {
